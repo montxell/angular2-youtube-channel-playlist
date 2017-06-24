@@ -4,4 +4,19 @@
   <h1>Youtube Channel</h1>
   <hr>
 
+  <div class="card-columns" *ngIf="videos.length > 0">
+
+    <div class="card animated fadeIn fast" *ngFor="let video of videos">
+      <img class="card-img-top img-fluid" [src]="video.thumbnails.high.url" alt="Card image cap">
+      <div class="card-block">
+        <h5 class="card-title"> {{ video.title}}</h5>
+        <button (click)="watchVideo(video)"
+                type="button" class="btn btn-outline-primary btn-block">
+            Watch video
+        </button>
+      </div>
+    </div>
+
+  </div>
+
 </div>
