@@ -12,6 +12,7 @@ export class YoutubeService {
   private playlist: string = "UU9zX2xZIJ4cnwRsgBpHGvMg";
 
   private nextPageToken: string = "";
+  
 
   constructor( public http: Http ) { }
 
@@ -26,6 +27,11 @@ export class YoutubeService {
     params.set( 'playlistId', this.playlist);
     params.set( 'key', this.apiKey);
 
+    if ( this.nextPageToken ) {
+      params.set( 'pageToken', this.nextPageToken );
+    }
+
+
     return this.http.get( url, { search: params } )
             .map( res => {
               console.log( res.json() );
@@ -38,7 +44,7 @@ export class YoutubeService {
               }
 
               return videos;
-              
+
             });
   }
 
